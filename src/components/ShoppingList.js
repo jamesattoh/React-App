@@ -9,11 +9,27 @@ function ShoppingList() {
      * Pour chaque plante dans plantList, si acc contient déjà la catégorie 
      * de cette plante (acc.includes(plant.category)), alors acc reste inchangé.
      *  Sinon, la catégorie de cette plante est ajoutée à acc (acc.concat(plant.category)).
+     * 
+     * reduce – Réduire un tableau à une seule valeur
+     * -----Prend deux arguments : Une valeur accumulée (ce que reduce calcule) et L'élément actuel du tableau.
+        Retourne une nouvelle version de la valeur accumulée.
+        ex : onst total = numbers.reduce((acc, current) => acc + current, 0);
+        /acc : c'est le total (au début, 0)
+        /current : c'est chaque nombre du tableau
+     * 
+     * includes – Vérifie si un tableau ou une chaîne contient une valeur :retourne true si la valeur est trouvée, sinon false
+     * 
+     * concat – Combiner des tableaux : ne modifie pas les tableaux d'origine et retourne un nouveau tableau.
+     * 
+     * forEach – Parcourir un tableau. EX : numbers.forEach((num) => {
+        -                                       total += num;
+        -                                    });
+
      */
 
 	const categories = plantList.reduce(
 		(acc, plant) =>
-			acc.includes(plant.category) ? acc : acc.concat(plant.category),
+			acc.includes(plant.category) ? acc : acc.concat(plant.category), //de facon unique on aura les categories
 		[]
 	)
 
@@ -42,6 +58,7 @@ function ShoppingList() {
 					<li key={plant.id} className='lmj-plant-item'>
                         {plant.name} 
                         {plant.isSpecialOffer && <span className='lmj-sales'>Soldes</span>}
+                        {plant.isBestSale && <span>🥳</span>}
                     </li>
 				))}
 			</ul>

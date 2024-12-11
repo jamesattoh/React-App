@@ -1,6 +1,8 @@
 import Banner from "./Banner";
 import Cart from "./Cart";
 import ShoppingList from "./ShoppingList";
+import CareScale from "./CareScale";
+import { plantList } from "../datas/plantList";
 
 function App() {
   return (
@@ -9,6 +11,7 @@ function App() {
       <Banner />
       <ShoppingList />
       <Cart />
+      <CareScale scaleValue={plantList.light} />
     </div>
   )
 
