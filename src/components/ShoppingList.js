@@ -1,5 +1,7 @@
 import { plantList } from '../datas/plantList'
+import PlantItem from './PlantItem';
 import '../styles/shoppingList.css'
+
 
 function ShoppingList() {
     /**
@@ -54,12 +56,16 @@ function ShoppingList() {
 				))}
 			</ul>
 			<ul className='lmj-plant-list'>
-				{plantList.map((plant) => (
-					<li key={plant.id} className='lmj-plant-item'>
-                        {plant.name} 
-                        {plant.isSpecialOffer && <span className='lmj-sales'>Soldes</span>}
-                        {plant.isBestSale && <span>🥳</span>}
-                    </li>
+				{plantList.map(({id, cover, name, light, water}) => (
+
+                        <PlantItem 
+                            id={id}
+                            cover={cover}
+                            name={name}
+                            light={light}
+                            water={water}
+                        />
+
 				))}
 			</ul>
 		</div>
