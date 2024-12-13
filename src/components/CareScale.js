@@ -1,6 +1,12 @@
 import Sun from '../assets/sun.svg'
 import Water from '../assets/water.svg'
 
+const quantityLabel = {
+	1: 'peu',
+	2: 'modérément',
+	3: 'beaucoup'
+}
+
 function CareScale({ scaleValue, careType }) {
 	const range = [1, 2, 3]
 	//a chaque fois qu'on veut donner une valeur a une props ou la modifier, il faut créer une new const
@@ -12,10 +18,18 @@ function CareScale({ scaleValue, careType }) {
 		)
 
 	return (
-		<div>
+		<div
+			onClick={() =>
+				alert(
+					`Cette plante requiert ${quantityLabel[scaleValue]} ${
+						careType === 'light' ? 'de lumière' : "d'arrosage"
+					}`
+				)
+			}
+		>
 			{range.map((rangeElem) =>
 			/** 
-			 * scaleValue sera la valeur de light ou wtaer : on itere avec map sur range
+			 * scaleValue sera la valeur de light ou water : on itere avec map sur range
 			 * a chaque fois que c'est >= a un elem de range on affiche la valeur de scaleType
 			 * Et scaleType est soit le soleil ou la goutte d'eau
 			 * 
