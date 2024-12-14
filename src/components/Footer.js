@@ -13,6 +13,11 @@ function Footer() {
         setInputValue(e.target.value)
     }
 
+	/**l'effet de cette fonction est : lorsque je clique dans le champ, et apres je clique 
+	 * qlq part autre que le chanmp de saisie, j'ai une alert
+	 * et c'est grace au event onBlur
+	 **/
+
     function handleBlur(){
         if(!inputValue.includes('@')){
             alert("Attention, il n'y a pas d'@, ceci n'est pas une adresse valide.")
@@ -29,7 +34,7 @@ function Footer() {
 				placeholder='Entrez votre mail'
 				onChange={handleInput}
 				value={inputValue}
-				onBlur={handleBlur}
+				onBlur={handleBlur} //l'event en question geree par handleBlur
             />
 		</footer>
 	)
