@@ -30,6 +30,7 @@ function Cart() {
 			<div>Monstera : {monsteraPrice}€</div>
 			<button onClick={() => updateCart(cart + 1)}>Ajouter</button>
 			<h3>Total : {monsteraPrice * cart}€</h3>
+			<button onClick={() => updateCart(0)} >Vider le Panier</button> {/* on aurait pu mettre onClick={() => updateCart(cart === 0)*/}
 		</div>
 	) : (
 		<div className='lmj-cart-closed'>
