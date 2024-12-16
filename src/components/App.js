@@ -5,9 +5,13 @@ import Footer from "./Footer";
 import ShoppingList from "./ShoppingList";
 import '../styles/banner.css'
 import '../styles/layout.css'
+import { useState } from "react";
 
 
 function App() {
+
+  const [cart, updateCart] = useState([])
+
   return (
     <div>
       
@@ -19,8 +23,8 @@ function App() {
 			</Banner>
 
 			<div className='lmj-layout-inner'>
-          <Cart />
-          <ShoppingList />
+          <Cart cart={cart} updateCart={updateCart} />
+          <ShoppingList cart={cart} updateCart={updateCart} />
 			</div>
 
 			<Footer />

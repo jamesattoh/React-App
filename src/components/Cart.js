@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import '../styles/cart.css'
 
-function Cart() {
+function Cart({ cart, updateCart}) {
 	const monsteraPrice = 8
     /**
      *  on peut créer un state cart . Avec  useState  , nous devons  déclarer
@@ -15,7 +15,7 @@ function Cart() {
      * const [coucou, cavabien] = useState(0)
 
      */
-	const [cart, updateCart] = useState(0)
+	//const [cart, updateCart] = useState(0)
 	const [isOpen, setIsOpen] = useState(true)
 
 	return isOpen ? (
@@ -28,7 +28,6 @@ function Cart() {
 			</button>
 			<h2>Panier</h2>
 			<div>Monstera : {monsteraPrice}€</div>
-			<button onClick={() => updateCart(cart + 1)}>Ajouter</button>
 			<h3>Total : {monsteraPrice * cart}€</h3>
 			<button onClick={() => updateCart(0)} >Vider le Panier</button> {/* on aurait pu mettre onClick={() => updateCart(cart === 0)*/}
 		</div>

@@ -3,7 +3,7 @@ import PlantItem from './PlantItem';
 import '../styles/shoppingList.css'
 
 
-function ShoppingList() {
+function ShoppingList({ cart, updateCart }) {
     /**
      * la méthode reduce pour parcourir plantList et créer un tableau categories 
      * qui contient toutes les catégories de plantes, sans doublons. Voici ce 
@@ -58,14 +58,18 @@ function ShoppingList() {
 			<ul className='lmj-plant-list'>
 				{plantList.map(({id, cover, name, light, water}) => (
 
+                    <div key={id}>
                         <PlantItem 
-                            key={id}
-                            id={id}
+                            //key={id}
+                            //id={id}
                             cover={cover}
                             name={name}
                             light={light}
                             water={water}
                         />
+                        <button onClick={() => updateCart(cart + 1)}>Ajouter</button>
+
+                    </div>
 
 				))}
 			</ul>
