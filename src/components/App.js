@@ -1,11 +1,10 @@
+import { useState } from "react";
 import Banner from "./Banner";
 import logo from "../assets/logo.png"
 import Cart from "./Cart";
 import Footer from "./Footer";
 import ShoppingList from "./ShoppingList";
-import '../styles/banner.css'
 import '../styles/layout.css'
-import { useState } from "react";
 
 
 function App() {
@@ -14,8 +13,6 @@ function App() {
 
   return (
     <div>
-      
-      <h2>Hello Ici Dolgen 🔥</h2>
 
 			<Banner>
 				<img src={logo} alt='La maison jungle' className='lmj-logo' />

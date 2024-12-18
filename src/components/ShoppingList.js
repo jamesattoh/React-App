@@ -35,6 +35,21 @@ function ShoppingList({ cart, updateCart }) {
 		[]
 	)
 
+    function addToCart(name, price) {
+		const currentPlantSaved = cart.find((plant) => plant.name === name)
+		if (currentPlantSaved) {
+			const cartFilteredCurrentPlant = cart.filter(
+				(plant) => plant.name !== name
+			)
+			updateCart([
+				...cartFilteredCurrentPlant,
+				{ name, price, amount: currentPlantSaved.amount + 1 }
+			])
+		} else {
+			updateCart([...cart, { name, price, amount: 1 }])
+		}
+	}
+
     /**
      * À partir d’une liste de données,  map()   permet de créer une liste de composants React
      * 
@@ -49,14 +64,14 @@ function ShoppingList({ cart, updateCart }) {
      * && précède un élément JSX précise que l'élément ne sera généré que si la condition est respectée.
      */
 	return (
-		<div>
+		<div className='lmj-shopping-list'>
 			<ul>
 				{categories.map((lol) => (
 					<li key={lol}>{lol}</li>
 				))}
 			</ul>
 			<ul className='lmj-plant-list'>
-				{plantList.map(({id, cover, name, light, water}) => (
+				{plantList.map(({id, cover, name, light, water, price}) => (
 
                     <div key={id}>
                         <PlantItem 
@@ -66,8 +81,9 @@ function ShoppingList({ cart, updateCart }) {
                             name={name}
                             light={light}
                             water={water}
+                            price={price}
                         />
-                        <button onClick={() => updateCart(cart + 1)}>Ajouter</button>
+                        <button onClick={() => addToCart(name, price)}>Ajouter</button>
 
                     </div>
 
