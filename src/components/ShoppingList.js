@@ -15,7 +15,7 @@ function ShoppingList({ cart, updateCart }) {
      * reduce – Réduire un tableau à une seule valeur
      * -----Prend deux arguments : Une valeur accumulée (ce que reduce calcule) et L'élément actuel du tableau.
         Retourne une nouvelle version de la valeur accumulée.
-        ex : onst total = numbers.reduce((acc, current) => acc + current, 0);
+        ex : const total = numbers.reduce((acc, current) => acc + current, 0);
         /acc : c'est le total (au début, 0)
         /current : c'est chaque nombre du tableau
      * 
@@ -34,18 +34,38 @@ function ShoppingList({ cart, updateCart }) {
 			acc.includes(plant.category) ? acc : acc.concat(plant.category), //de facon unique on aura les categories
 		[]
 	)
+    
+/**
+La fonction addToCart permet d'ajouter une plante au panier (cart).
 
+* Recherche de la plante dans le panier :
+
+La fonction prend deux arguments : name (le nom de la plante) et price (le prix de la plante).
+Elle cherche si la plante avec le nom donné (name) est déjà présente dans le panier en utilisant la méthode find sur le tableau cart.
+Si la plante est déjà dans le panier :
+
+* Si la plante est trouvée (currentPlantSaved n'est pas undefined), elle filtre le panier pour exclure cette plante en utilisant la 
+méthode filter. Ensuite, elle met à jour le panier (updateCart) en ajoutant la plante avec la quantité (amount) incrémentée de 1.
+
+* Si la plante n'est pas dans le panier :
+Si la plante n'est pas trouvée (currentPlantSaved est undefined), elle met à jour le panier (updateCart) en ajoutant la nouvelle 
+plante avec une quantité (amount) de 1.
+*/
     function addToCart(name, price) {
+        // Chercher si la plante est déjà dans le panier
 		const currentPlantSaved = cart.find((plant) => plant.name === name)
 		if (currentPlantSaved) {
+            // Si la plante est déjà dans le panier, filtrer le panier pour exclure cette plante
 			const cartFilteredCurrentPlant = cart.filter(
 				(plant) => plant.name !== name
 			)
+            // Mettre à jour le panier en ajoutant la plante avec la quantité incrémentée de 1
 			updateCart([
 				...cartFilteredCurrentPlant,
 				{ name, price, amount: currentPlantSaved.amount + 1 }
 			])
 		} else {
+            // Si la plante n'est pas dans le panier, ajouter la nouvelle plante avec une quantité de 1
 			updateCart([...cart, { name, price, amount: 1 }])
 		}
 	}
