@@ -1,9 +1,12 @@
 import { plantList } from '../datas/plantList'
 import PlantItem from './PlantItem';
+import Categories from './Categories';
 import '../styles/shoppingList.css'
+import { useState } from 'react';
 
 
 function ShoppingList({ cart, updateCart }) {
+    const [activateCategory, setActivateCategory] = useState('')
     /**
      * la méthode reduce pour parcourir plantList et créer un tableau categories 
      * qui contient toutes les catégories de plantes, sans doublons. Voici ce 
@@ -85,29 +88,29 @@ plante avec une quantité (amount) de 1.
      */
 	return (
 		<div className='lmj-shopping-list'>
-			<ul>
-				{categories.map((lol) => (
-					<li key={lol}>{lol}</li>
-				))}
-			</ul>
+			<Categories 
+                categories={categories}
+                setActivateCategory={setActivateCategory}
+                activateCategory={activateCategory}
+            />
+
 			<ul className='lmj-plant-list'>
-				{plantList.map(({id, cover, name, light, water, price}) => (
+				{plantList.map(({ id, cover, name, light, water, price, category }) => 
+                    !activateCategory || activateCategory === category ? (
+                        <div key={id}>
+                            <PlantItem 
+                                cover={cover}
+                                name={name}
+                                light={light}
+                                water={water}
+                                price={price}
+                            />
+                            <button onClick={() => addToCart(name, price)}>Ajouter</button>
 
-                    <div key={id}>
-                        <PlantItem 
-                            //key={id}
-                            //id={id}
-                            cover={cover}
-                            name={name}
-                            light={light}
-                            water={water}
-                            price={price}
-                        />
-                        <button onClick={() => addToCart(name, price)}>Ajouter</button>
+                        </div>
 
-                    </div>
-
-				))}
+				    ):null
+                )}
 			</ul>
 		</div>
 	)
