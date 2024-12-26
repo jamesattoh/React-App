@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 
 function ShoppingList({ cart, updateCart }) {
+    // Déclaration de l'état pour la catégorie activée
     const [activateCategory, setActivateCategory] = useState('')
     /**
      * la méthode reduce pour parcourir plantList et créer un tableau categories 
@@ -31,7 +32,7 @@ function ShoppingList({ cart, updateCart }) {
         -                                    });
 
      */
-
+    // Génération des catégories uniques à partir de plantList. Ce tableau est ensuite passé en prop au composant Categories.
 	const categories = plantList.reduce(
 		(acc, plant) =>
 			acc.includes(plant.category) ? acc : acc.concat(plant.category), //de facon unique on aura les categories
@@ -88,12 +89,14 @@ plante avec une quantité (amount) de 1.
      */
 	return (
 		<div className='lmj-shopping-list'>
+            {/* Utilisation du composant Categories */}
 			<Categories 
-                categories={categories}
-                setActivateCategory={setActivateCategory}
-                activateCategory={activateCategory}
+                categories={categories} // Tableau des catégories disponibles
+                setActivateCategory={setActivateCategory} // Fonction pour mettre à jour la catégorie activée
+                activateCategory={activateCategory} // Catégorie actuellement activée
             />
 
+            {/* Affichage des plantes filtrées par catégorie */}
 			<ul className='lmj-plant-list'>
 				{plantList.map(({ id, cover, name, light, water, price, category }) => 
                     !activateCategory || activateCategory === category ? (
