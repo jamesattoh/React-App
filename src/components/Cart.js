@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import '../styles/cart.css'
 
 /**cart représente l'état du panier dans l'application. C'est un tableau qui contient des objets 
@@ -16,7 +16,7 @@ Utilisation dans Cart : Dans Cart, cart est utilisé pour :
 **/
 
 
-function Cart({ cart, updateCart}) {
+function Cart({ cart, updateCart, activateCategory }) {
 	//const monsteraPrice = 8
     /**
      *  on peut créer un state cart . Avec  useState  , nous devons  déclarer
@@ -38,6 +38,11 @@ function Cart({ cart, updateCart}) {
 		(acc, plantType) => acc + plantType.amount * plantType.price,
 		0
 	)
+
+	useEffect(() => {
+		document.title = `LMJ: ${total}€ d'achats`
+	}, [total])
+
 
 	return isOpen ? (
 		<div className='lmj-cart'>
