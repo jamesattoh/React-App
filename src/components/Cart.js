@@ -16,7 +16,7 @@ Utilisation dans Cart : Dans Cart, cart est utilisé pour :
 **/
 
 
-function Cart({ cart, updateCart, activateCategory }) {
+function Cart({ cart, updateCart }) {
 	//const monsteraPrice = 8
     /**
      *  on peut créer un state cart . Avec  useState  , nous devons  déclarer
@@ -33,12 +33,17 @@ function Cart({ cart, updateCart, activateCategory }) {
 
 	// État pour gérer si le panier est ouvert ou fermé
 	const [isOpen, setIsOpen] = useState(true)
+
+	// Récupération des clés des objets du panier
+	const items = Object.keys(cart)
+
 	// Calculer le prix total des articles dans le panier
-	const total = cart.reduce( //le fonctionnement de reduce est au niveau de ShoppingList.js
-		(acc, plantType) => acc + plantType.amount * plantType.price,
+	const total = items.reduce( //reduce reduit le tableau items a une seule valeur
+		(acc, item) => acc + cart[item].amount * cart[item].price,
 		0
 	)
 
+    // Mettre à jour le titre du document avec le total des achats
 	useEffect(() => {
 		document.title = `LMJ: ${total}€ d'achats`
 	}, [total])
@@ -55,9 +60,9 @@ function Cart({ cart, updateCart, activateCategory }) {
 			{cart.length > 0 ? (
 				<div>
 					<h2>Panier</h2>
-					<ul>
+					<ul> {/*Utilisation de map pour afficher chaque article du panier avec ses détails (name, price, amount)*/}
 						{cart.map(({ name, price, amount }, index) => (
-							<div key={`${name}-${index}`}>
+							<div key={`${name}-${index}`}> 
 								{name} {price}€ x {amount}
 							</div>
 						))}

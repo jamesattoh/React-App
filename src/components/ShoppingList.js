@@ -1,8 +1,8 @@
 import { plantList } from '../datas/plantList'
+import { useState } from 'react';
 import PlantItem from './PlantItem';
 import Categories from './Categories';
 import '../styles/shoppingList.css'
-import { useState } from 'react';
 
 
 function ShoppingList({ cart, updateCart }) {
