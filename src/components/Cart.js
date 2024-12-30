@@ -34,20 +34,20 @@ function Cart({ cart, updateCart }) {
 	// État pour gérer si le panier est ouvert ou fermé
 	const [isOpen, setIsOpen] = useState(true)
 
-	//Fonction pour supprimer un article du panier
-	const removeItemFromCart = (itemId) => {
-        const newCart = cart.map(item => {
-            if (item.id === itemId) {
-                if (item.amount > 1) {
-                    return { ...item, amount: item.amount - 1 };
-                } else {
-                    return null;
-                }
-            }
-            return item;
-        }).filter(item => item !== null);
-        updateCart(newCart);
-    };
+	// //Fonction pour supprimer un article du panier
+	// const removeItemFromCart = (itemId) => {
+    //     const newCart = cart.map(item => {
+    //         if (item.id === itemId) {
+    //             if (item.amount > 1) {
+    //                 return { ...item, amount: item.amount - 1 };
+    //             } else {
+    //                 return null;
+    //             }
+    //         }
+    //         return item;
+    //     }).filter(item => item !== null);
+    //     updateCart(newCart);
+    // };
 
 	// Récupération des clés des objets du panier
 	const items = Object.keys(cart)
@@ -79,7 +79,7 @@ function Cart({ cart, updateCart }) {
 						{cart.map(({ id, name, price, amount }, index) => (
 							<div key={`${name}-${index}`}> 
 								{name} {price}€ x {amount}
-								<button onClick={()=>removeItemFromCart(id)}>Supprimer</button>
+								{/*<button onClick={()=>removeItemFromCart(id)}>Supprimer</button>*/}
 							</div>
 						))}
 					</ul>
