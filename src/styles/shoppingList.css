@@ -7,5 +7,21 @@
 	padding: 32px;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
+	justify-content: space-between;
+    gap: 40px;
+}
+
+
+@media (max-width: 768px) {
+    .lmj-plant-list {
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .lmj-plant-list {
+        justify-content: center;
+        align-items: center;
+    }
 }

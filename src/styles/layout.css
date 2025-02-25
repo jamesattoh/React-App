@@ -2,3 +2,9 @@
 	display: flex;
 	flex-direction: row;
 }
+
+@media (max-width: 768px) {
+    .lmj-layout-inner {
+        flex-direction: column;
+    }
+}

@@ -6,3 +6,23 @@
 .lmj-categories-select {
 	margin-right: 15px;
 }
+
+@media (max-width: 768px) {
+    .lmj-categories {
+        padding-top: 20px;
+    }
+
+    .lmj-categories-select {
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .lmj-categories {
+        padding-top: 10px;
+    }
+
+    .lmj-categories-select {
+        margin-right: 5px;
+    }
+}

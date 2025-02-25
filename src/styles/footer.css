@@ -12,3 +12,23 @@
 .lmj-footer-elem {
 	margin-bottom: 10px;
 }
+
+@media (max-width: 768px) {
+    .lmj-footer {
+        padding: 16px;
+    }
+
+    .lmj-footer-elem {
+        margin-bottom: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .lmj-footer {
+        padding: 8px;
+    }
+
+    .lmj-footer-elem {
+        margin-bottom: 5px;
+    }
+}

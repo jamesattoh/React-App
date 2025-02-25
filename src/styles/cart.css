@@ -33,3 +33,37 @@
 .lmj-cart-closed > button {
 	color: black;
 }
+
+@media (max-width: 768px) {
+    .lmj-cart {
+        width: 100%;
+        max-width: 100%;
+        padding: 16px;
+        box-sizing: border-box;
+    }
+
+    .lmj-cart-add-button {
+        margin-left: 16px;
+    }
+
+    .lmj-cart-closed {
+        width: 100%;
+        max-width: 100%;
+        padding: 16px;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 480px) {
+    .lmj-cart {
+        padding: 8px;
+    }
+
+    .lmj-cart-add-button {
+        margin-left: 8px;
+    }
+
+    .lmj-cart-closed {
+        padding: 8px;
+    }
+}
